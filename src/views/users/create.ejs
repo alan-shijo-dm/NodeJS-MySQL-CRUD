@@ -1,0 +1,32 @@
+<h1 class="text-center p-4">Create a new user</h1>
+<div class="shadow-sm w-50 bg-body-tertiary rounded m-auto p-4 d-flex justify-content-center align-items-center">
+    <form action="/users" method="post" class="w-75">
+        <div class="mb-3">
+            <label for="fullName">
+                Name
+            </label>
+            <input type="text" name="full_name" id="fullName" class="form-control" placeholder="Full name">
+        </div>
+        <div class="mb-3">
+            <label for="email">
+                Email
+            </label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email address">
+        </div>
+        <div class="mb-3">
+            <label for="mobNo">
+                Mobile Number
+            </label>
+            <input type="tel" name="mobile_number" id="mobNo" class="form-control" placeholder="Mobile number">
+        </div>
+        <div class="mb-3">
+            <label for="jobPosition">
+                Job Position
+            </label>
+            <input type="text" name="job_position" id="jobPosition" class="form-control" placeholder="Job position">
+        </div>
+        <div class="mb-3">
+            <button type="submit" id="btnCreate" class="btn btn-success">Create</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,57 @@
+<h1 class="text-center mt-4 ">List All Users</h1>
+<% if(results.length !== 0){  %>
+<div class="m-auto w-75 mt-5">
+    <a href="/users/create" class="btn btn-success btn-sm mb-2 fw-bold">Create</a>
+    <table class="table table-bordered">
+        <thead>
+          <tr class="table-light">
+            <th scope="col">#</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Job Position</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% let slNo = 1; %>
+            <% results.forEach((result) => { %>
+          <tr>  
+            <th scope="row"><%= slNo %></th>
+            <td><%= result.full_name %></td>
+            <td><%= result.email %></td>
+            <td><%= result.mobile_number %></td>
+            <td><%= result.job_position %></td>
+            <td class="d-flex gap-2">
+                <a href="/users/<%= result.id %>" class="btn btn-sm btn-light shadow-sm" title="View">
+                    <i class="bi bi-eye"></i>
+                </a>
+                <a href="/users/<%= result.id %>/edit" class="btn btn-sm btn-light shadow-sm" title="Edit">
+                    <i class="bi bi-pen text-primary"></i>
+                </a>
+                <form id="deleteForm" action="/users/<%= result.id %>?_method=DELETE" method="post">
+                    <button type="button" id="deleteBtn" onclick="deleteFn(this)" class="btn btn-sm shadow-sm" title="Delete">
+                        <i class="bi bi-trash text-danger"></i>
+                    </button>
+                </form>
+            </td>
+          </tr>
+          <% slNo++; }); %>
+        </tbody>
+      </table>
+</div>
+<% }else{ %>
+<div class="m-4">
+    <p class="text-danger text-center">No records found.</p>
+    <div class="d-flex justify-content-center">
+        <a href="/users/create" class="btn btn-success btn-sm mb-2 fw-bold">Create</a>
+    </div>
+</div>
+<% } %>
+<script>
+    const deleteFn = (btn) => {
+        let deleteForm = document.getElementById('deleteForm');
+        let confirmed = confirm('Are you sure want to delete this user?');
+        if(confirmed) deleteForm.submit();
+    }
+</script>
