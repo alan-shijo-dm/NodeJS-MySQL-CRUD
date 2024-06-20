@@ -29,8 +29,8 @@
                 <a href="/users/<%= result.id %>/edit" class="btn btn-sm btn-light shadow-sm" title="Edit">
                     <i class="bi bi-pen text-primary"></i>
                 </a>
-                <form id="deleteForm" action="/users/<%= result.id %>?_method=DELETE" method="post">
-                    <button type="button" id="deleteBtn" onclick="deleteFn(this)" class="btn btn-sm shadow-sm" title="Delete">
+                <form id="deleteForm" action="/users/<%= result.id %>?_method=DELETE" method="post" onsubmit="return confirm('Are you sure want to delete this user?')">
+                    <button type="submit" id="deleteBtn" class="btn btn-sm shadow-sm" title="Delete">
                         <i class="bi bi-trash text-danger"></i>
                     </button>
                 </form>
@@ -48,10 +48,3 @@
     </div>
 </div>
 <% } %>
-<script>
-    const deleteFn = (btn) => {
-        let deleteForm = document.getElementById('deleteForm');
-        let confirmed = confirm('Are you sure want to delete this user?');
-        if(confirmed) deleteForm.submit();
-    }
-</script>
